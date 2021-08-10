@@ -48,6 +48,8 @@ class PermissionProvider @OptIn(ExperimentalCoroutinesApi::class) constructor(
         lateinit var instance: PermissionProvider
             private set
 
+        fun isInitialized() = ::instance.isInitialized
+
         /**
          * Initialize the PermissionProvider instance and wire the components to check and observe
          * PermissionProvider status changes.
