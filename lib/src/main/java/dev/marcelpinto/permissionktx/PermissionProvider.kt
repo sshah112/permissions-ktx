@@ -48,6 +48,15 @@ class PermissionProvider @OptIn(ExperimentalCoroutinesApi::class) constructor(
         lateinit var instance: PermissionProvider
             private set
 
+        /**
+         * When PermissionProvider self-initialization is disabled, PermissionProvider.init(context)
+         * must be called to manually initialize the PermissionProvider instance. Depending on
+         * implementation if init() is called more than once (multiple times in app OR in app + test),
+         * an IllegalStateException is thrown.
+         *
+         * Provide an easy way to check if PermissionProvider instance is already
+         * initialized, before calling PermissionProvider.init(context).
+         */
         fun isInitialized() = ::instance.isInitialized
 
         /**
